@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEX360 | Estudio Jurídico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="hero" id="inicio">
+    <div class="top-bar">
+      <span>LEX360 · Estudio Jurídico Integral</span>
+      <a href="#contacto">Contacto Directo</a>
+    </div>
+    <nav class="main-nav">
+      <div class="logo">LEX360</div>
+      <ul>
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#quienes">QUIÉNES SOMOS</a></li>
+        <li><a href="areas.html">ÁREAS DE PRÁCTICA</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+      </ul>
+    </nav>
+    <div class="hero-slider">
+      <div class="slide active" data-target="#servicios">
+        <div class="overlay"></div>
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80" alt="Abogados revisando documentos" />
+        <div class="slide-content">
+          <p>Estudio boutique</p>
+          <h1>Estrategias jurídicas precisas para cada caso</h1>
+          <a class="btn" href="#servicios">Nuestros servicios</a>
+        </div>
+      </div>
+      <div class="slide" data-url="areas.html">
+        <div class="overlay"></div>
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80" alt="Personas cruzando frontera" />
+        <div class="slide-content">
+          <p>Derecho Migratorio</p>
+          <h1>Migración segura, visas definitivas a tiempo</h1>
+          <a class="btn" href="areas.html#areas">Ver especialidades</a>
+        </div>
+      </div>
+      <div class="slide" data-target="#servicios">
+        <div class="overlay"></div>
+        <img src="https://images.unsplash.com/photo-1507209696998-3c532be9b2b8?auto=format&fit=crop&w=1600&q=80" alt="Reunión de familia con asesor legal" />
+        <div class="slide-content">
+          <p>Derecho de Familia</p>
+          <h1>Protegemos vínculos con empatía y rigor</h1>
+          <a class="btn" href="#servicios">Solicitar guía</a>
+        </div>
+      </div>
+      <div class="slide" data-target="#contacto">
+        <div class="overlay"></div>
+        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=80" alt="Oficial de justicia tomando notas" />
+        <div class="slide-content">
+          <p>Juzgado de Policía Local</p>
+          <h1>Defensa ágil ante infracciones y reclamos</h1>
+          <a class="btn" href="#contacto">Agendar defensa</a>
+        </div>
+      </div>
+      <div class="slider-controls" aria-label="Controles del carrusel">
+        <button class="control prev" type="button" aria-label="Anterior">‹</button>
+        <button class="control next" type="button" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="services" id="servicios" aria-label="Servicios principales">
+      <div class="section-heading">
+        <p>Nuestro catálogo legal</p>
+        <h2>Nuestros Servicios</h2>
+        <p class="section-subtitle">
+          Ofrecemos asesoría especializada en migración, civil, familia, juzgado policial, corretaje y consultoría empresarial para acompañarte de principio a fin.
+        </p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card" id="migratorio">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80" alt="Pasaporte y avión de papel" />
+          </figure>
+          <div class="service-text">
+            <h3>Derecho Migratorio</h3>
+            <p class="service-lead">Asesoramos a extranjeros en todas las etapas migratorias en Chile.</p>
+            <ul class="service-list">
+              <li>Residencia Transitoria</li>
+              <li>Residencia Definitiva</li>
+              <li>Residencia Temporal</li>
+              <li>Refugio</li>
+              <li>Nacionalidad</li>
+              <li>Recursos Judiciales y Administrativos</li>
+              <li>Sanciones / Multas</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card" id="civil">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Equipo jurídico revisando cláusulas" />
+          </figure>
+          <div class="service-text">
+            <h3>Derecho Civil</h3>
+            <p class="service-lead">Defendemos tus derechos civiles en contratos, propiedades y demandas.</p>
+            <ul class="service-list">
+              <li>Juicio de Arrendamiento</li>
+              <li>Indemnización de Perjuicios</li>
+              <li>Cambio de Nombre</li>
+              <li>Solicitudes de Interdicción</li>
+              <li>Muerte Presunta</li>
+              <li>Juicios de Partición</li>
+              <li>Posesión Efectiva</li>
+              <li>Redacción de Escrituras y Contratos</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card" id="familia">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Familia sonriendo con apoyo legal" />
+          </figure>
+          <div class="service-text">
+            <h3>Derecho de Familia</h3>
+            <p class="service-lead">Abordamos cada caso con sensibilidad y compromiso.</p>
+            <ul class="service-list">
+              <li>Divorcio y Separación Judicial</li>
+              <li>Pensión de Alimentos</li>
+              <li>Autorización de Salida del País</li>
+              <li>Relación Directa y Regular</li>
+              <li>Cuidado Personal</li>
+              <li>Compensación Económica</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card" id="jpl">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80" alt="Juez con mazo" />
+          </figure>
+          <div class="service-text">
+            <h3>Juzgado de Policía Local</h3>
+            <p class="service-lead">Representación ante juzgados locales por conflictos normativos o sanciones.</p>
+            <ul class="service-list">
+              <li>Ley de Tránsito</li>
+              <li>Ley de Copropiedad</li>
+              <li>Ley del Consumidor</li>
+              <li>Ley de Fraude Bancario</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card" id="corretaje">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Llave entrando a cerradura" />
+          </figure>
+          <div class="service-text">
+            <h3>Corretaje de Propiedades</h3>
+            <p class="service-lead">Gestión profesional en operaciones inmobiliarias.</p>
+            <ul class="service-list">
+              <li>Compra-Venta de Inmuebles</li>
+              <li>Administración de Propiedades</li>
+              <li>Arriendo de Inmuebles</li>
+              <li>Estudio de Títulos</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service-card" id="otros">
+          <figure class="service-media">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Mesa de directorio con documentos" />
+          </figure>
+          <div class="service-text">
+            <h3>Otros Servicios</h3>
+            <p class="service-lead">Servicios legales complementarios enfocados en protección y registro.</p>
+            <ul class="service-list">
+              <li>Registro de Marcas</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="quienes" class="quienes">
+      <div class="section-heading align-left">
+        <p>Nuestro compromiso</p>
+        <h2>Quiénes Somos</h2>
+      </div>
+      <div class="quienes-layout">
+        <div class="quienes-text">
+          <p>
+            Somos un equipo de abogados comprometidos con la excelencia y la cercanía humana, especializados en Derecho de Familia, Civil, Migratorio y Juzgado Policial Local. Nuestra misión es brindar una asesoría jurídica personalizada, basada en la confianza, la empatía y la búsqueda constante de soluciones efectivas.
+          </p>
+          <p>
+            Creemos que cada caso es único, por eso dedicamos el tiempo necesario para entender las necesidades reales de nuestros representados y ofrecer alternativas legales que protejan sus intereses. Nos distingue una atención ágil y accesible, con canales de contacto expeditos y una gran flexibilidad para adaptarnos a las urgencias que cada situación requiere.
+          </p>
+          <p>
+            En nuestro estudio, unimos experiencia, ética y compromiso para alcanzar resultados justos y sostenibles. Más que abogados, somos aliados legales que te acompañan en cada paso, guiándote con profesionalismo, claridad y un genuino interés por tu bienestar.
+          </p>
+        </div>
+        <figure class="quienes-media">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Equipo jurídico conversando con clientes" />
+          <figcaption>Confianza y acompañamiento permanente en cada gestión.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-content">
+        <h2>¿Listo para conversar tu caso?</h2>
+        <p>
+          Agenda una reunión telemática o presencial. Atendemos urgencias y consultas preventivas para anticipar riesgos.
+        </p>
+        <a class="btn" href="#contacto">Agendar ahora</a>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <div class="section-heading">
+        <p>Contáctanos</p>
+        <h2>Estamos disponibles</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-details">
+          <h3>LEX360</h3>
+          <p>Providencia, Santiago · Atención para todo Chile</p>
+          <ul>
+            <li><strong>Teléfono:</strong> +56 9 1234 5678</li>
+            <li><strong>Correo:</strong> contacto@lex360.cl</li>
+            <li><strong>Horario:</strong> Lunes a Viernes · 9:00 a 19:00 hrs</li>
+          </ul>
+        </div>
+        <form class="contact-form">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Tu nombre" required />
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" placeholder="nombre@correo.com" required />
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" rows="4" placeholder="Cuéntanos tu caso" required></textarea>
+          <button type="submit" class="btn">Enviar consulta</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo">LEX360</span>
+        <p>Estudio jurídico integral con cobertura nacional y atención personalizada en derecho migratorio, civil, familia y juzgado policial local.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#quienes">Quiénes Somos</a></li>
+          <li><a href="areas.html">Áreas de Práctica</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contacto directo</h4>
+        <p>+56 9 1234 5678</p>
+        <p>contacto@lex360.cl</p>
+        <p>Providencia, Santiago</p>
+      </div>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> LEX360 · Estudio Jurídico. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
