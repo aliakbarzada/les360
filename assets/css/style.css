@@ -36,6 +36,26 @@ img {
   overflow: hidden;
 }
 
+body.hero-mode-full .hero {
+  min-height: 100vh;
+}
+
+body.hero-mode-full .hero-slider {
+  height: calc(100vh - 190px);
+  min-height: 420px;
+  max-height: 860px;
+}
+
+body.hero-mode-compact .hero {
+  min-height: auto;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(12, 39, 64, 0.08);
+}
+
+body.hero-mode-compact .hero-slider {
+  height: clamp(320px, 60vh, 560px);
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -87,6 +107,7 @@ img {
 
 .hero-slider {
   position: relative;
+  height: clamp(360px, 75vh, 720px);
   height: calc(90vh - 150px);
 }
 
@@ -155,6 +176,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .overlay {
@@ -205,11 +227,20 @@ img {
 main {
   padding: 4rem 5vw 2rem;
   background: #fff;
+}
+
+body.hero-mode-full main {
   margin-top: -4rem;
   position: relative;
   z-index: 2;
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -10px 40px rgba(12, 39, 64, 0.12);
+}
+
+body.hero-mode-compact main {
+  margin-top: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .text-link {
@@ -227,6 +258,60 @@ main {
 
 .text-link:hover::after {
   transform: translateX(4px);
+}
+
+.layout-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(12, 39, 64, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(12, 39, 64, 0.04), rgba(185, 151, 91, 0.05));
+}
+
+.layout-toggle-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+.layout-toggle-text h3 {
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.layout-toggle-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.toggle-btn {
+  border: 1px solid rgba(12, 39, 64, 0.2);
+  background: #fff;
+  color: var(--primary);
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.toggle-btn.active,
+.toggle-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.layout-toggle-hint {
+  flex-basis: 100%;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .services {
@@ -313,11 +398,32 @@ main {
   font-size: 1.45rem;
 }
 
+.service-lead {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.service-list {
 .service-text ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.35rem 1rem;
+  color: var(--text);
+}
+
+.service-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.service-list li::before {
+  content: '✓';
+  color: var(--secondary);
+  font-weight: 700;
   gap: 0.3rem;
   color: var(--text);
 }
@@ -437,6 +543,12 @@ main {
 
 .slider-controls {
   position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   inset: auto 5vw 10%;
   display: flex;
   gap: 1rem;
@@ -669,12 +781,25 @@ main {
     font-size: 0.85rem;
   }
 
+  .layout-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .layout-toggle-actions {
+    justify-content: flex-start;
+  }
+
   .quienes-layout {
     grid-template-columns: 1fr;
   }
 
   .service-card {
     max-width: 100%;
+  }
+
+  .hero-slider {
+    height: clamp(320px, 70vh, 600px);
   }
 }
 
@@ -685,6 +810,23 @@ main {
     gap: 0.5rem;
   }
 
+  main {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .hero-slider {
+    height: clamp(300px, 65vh, 520px);
+  }
+
+  .slide-content {
+    left: 6vw;
+    right: 6vw;
+    bottom: 18%;
+  }
+
+  .slider-controls {
+    bottom: 10%;
   .hero-slider {
     height: 60vh;
   }

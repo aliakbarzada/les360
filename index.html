@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+<body class="hero-mode-compact">
 <body>
   <header class="hero" id="inicio">
     <div class="top-bar">
@@ -69,6 +70,21 @@
   </header>
 
   <main>
+    <section class="layout-toggle" aria-label="Comparar versiones del hero">
+      <div class="layout-toggle-text">
+        <p class="eyebrow">Vista previa</p>
+        <h3>¿Prefieres el hero a pantalla completa o compacto?</h3>
+        <p>
+          Activa cada opción para visualizar cómo se comporta el carrusel respecto a los servicios. Esta herramienta solo es
+          para pruebas de diseño y no afecta otras páginas.
+        </p>
+      </div>
+      <div class="layout-toggle-actions" role="group" aria-label="Modos del hero">
+        <button class="toggle-btn" type="button" data-hero-mode="full">Hero a pantalla completa</button>
+        <button class="toggle-btn active" type="button" data-hero-mode="compact">Hero compacto</button>
+      </div>
+      <p class="layout-toggle-hint">Desplázate tras elegir cada modo para comprobar la separación con “Nuestros Servicios”.</p>
+    </section>
     <section class="services" id="servicios" aria-label="Servicios principales">
       <div class="section-heading">
         <p>Nuestro catálogo legal</p>
@@ -83,6 +99,17 @@
             <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80" alt="Pasaporte y avión de papel" />
           </figure>
           <div class="service-text">
+            <h3>Derecho Migratorio</h3>
+            <p class="service-lead">Asesoramos a extranjeros en todas las etapas migratorias en Chile.</p>
+            <ul class="service-list">
+              <li>Residencia Transitoria</li>
+              <li>Residencia Definitiva</li>
+              <li>Residencia Temporal</li>
+              <li>Refugio</li>
+              <li>Nacionalidad</li>
+              <li>Recursos Judiciales y Administrativos</li>
+              <li>Sanciones / Multas</li>
+            </ul>
             <p class="eyebrow">Residencias, nacionalidad y defensa</p>
             <h3>Derecho Migratorio</h3>
             <p>
@@ -100,6 +127,18 @@
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Equipo jurídico revisando cláusulas" />
           </figure>
           <div class="service-text">
+            <h3>Derecho Civil</h3>
+            <p class="service-lead">Defendemos tus derechos civiles en contratos, propiedades y demandas.</p>
+            <ul class="service-list">
+              <li>Juicio de Arrendamiento</li>
+              <li>Indemnización de Perjuicios</li>
+              <li>Cambio de Nombre</li>
+              <li>Solicitudes de Interdicción</li>
+              <li>Muerte Presunta</li>
+              <li>Juicios de Partición</li>
+              <li>Posesión Efectiva</li>
+              <li>Redacción de Escrituras y Contratos</li>
+            </ul>
             <p class="eyebrow">Contratos, patrimonio y litigios</p>
             <h3>Derecho Civil</h3>
             <p>
@@ -117,6 +156,16 @@
             <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Familia sonriendo con apoyo legal" />
           </figure>
           <div class="service-text">
+            <h3>Derecho de Familia</h3>
+            <p class="service-lead">Abordamos cada caso con sensibilidad y compromiso.</p>
+            <ul class="service-list">
+              <li>Divorcio y Separación Judicial</li>
+              <li>Pensión de Alimentos</li>
+              <li>Autorización de Salida del País</li>
+              <li>Relación Directa y Regular</li>
+              <li>Cuidado Personal</li>
+              <li>Compensación Económica</li>
+            </ul>
             <p class="eyebrow">Acompañamiento humano</p>
             <h3>Derecho de Familia</h3>
             <p>
@@ -134,6 +183,14 @@
             <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80" alt="Juez con mazo" />
           </figure>
           <div class="service-text">
+            <h3>Juzgado de Policía Local</h3>
+            <p class="service-lead">Representación ante juzgados locales por conflictos normativos o sanciones.</p>
+            <ul class="service-list">
+              <li>Ley de Tránsito</li>
+              <li>Ley de Copropiedad</li>
+              <li>Ley del Consumidor</li>
+              <li>Ley de Fraude Bancario</li>
+            </ul>
             <p class="eyebrow">Respuesta inmediata</p>
             <h3>Juzgado de Policía Local</h3>
             <p>
@@ -151,6 +208,14 @@
             <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Llave entrando a cerradura" />
           </figure>
           <div class="service-text">
+            <h3>Corretaje de Propiedades</h3>
+            <p class="service-lead">Gestión profesional en operaciones inmobiliarias.</p>
+            <ul class="service-list">
+              <li>Compra-Venta de Inmuebles</li>
+              <li>Administración de Propiedades</li>
+              <li>Arriendo de Inmuebles</li>
+              <li>Estudio de Títulos</li>
+            </ul>
             <p class="eyebrow">Operaciones inmobiliarias</p>
             <h3>Corretaje de Propiedades</h3>
             <p>
@@ -168,6 +233,11 @@
             <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Mesa de directorio con documentos" />
           </figure>
           <div class="service-text">
+            <h3>Otros Servicios</h3>
+            <p class="service-lead">Servicios legales complementarios enfocados en protección y registro.</p>
+            <ul class="service-list">
+              <li>Registro de Marcas</li>
+            </ul>
             <p class="eyebrow">Soluciones integrales</p>
             <h3>Otros Servicios</h3>
             <p>
