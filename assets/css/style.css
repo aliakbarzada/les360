@@ -108,6 +108,7 @@ body.hero-mode-compact .hero-slider {
 .hero-slider {
   position: relative;
   height: clamp(360px, 75vh, 720px);
+  height: calc(90vh - 150px);
 }
 
 .inner-hero {
@@ -388,6 +389,10 @@ body.hero-mode-compact main {
   height: 100%;
 }
 
+.service-text p {
+  color: var(--muted);
+}
+
 .service-text h3 {
   color: var(--primary);
   font-size: 1.45rem;
@@ -399,6 +404,7 @@ body.hero-mode-compact main {
 }
 
 .service-list {
+.service-text ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -418,6 +424,14 @@ body.hero-mode-compact main {
   content: '✓';
   color: var(--secondary);
   font-weight: 700;
+  gap: 0.3rem;
+  color: var(--text);
+}
+
+.service-text ul li::before {
+  content: '•';
+  color: var(--secondary);
+  margin-right: 0.4rem;
 }
 
 .eyebrow {
@@ -535,6 +549,8 @@ body.hero-mode-compact main {
   display: flex;
   align-items: center;
   justify-content: center;
+  inset: auto 5vw 10%;
+  display: flex;
   gap: 1rem;
   z-index: 2;
 }
@@ -811,5 +827,16 @@ body.hero-mode-compact main {
 
   .slider-controls {
     bottom: 10%;
+  .hero-slider {
+    height: 60vh;
+  }
+
+  main {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .slider-controls {
+    inset: auto 1.5rem 12%;
   }
 }
