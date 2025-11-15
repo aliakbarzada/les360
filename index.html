@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="layout-full">
+<body>
   <header class="hero" id="inicio">
     <div class="top-bar">
       <span>LEX360 · Estudio Jurídico Integral</span>
@@ -68,12 +68,6 @@
     </div>
   </header>
 
-  <div class="layout-switcher" aria-label="Cambiar vista del carrusel">
-    <span>Vista del carrusel:</span>
-    <button class="layout-btn active" type="button" data-layout="full">Carrusel completo</button>
-    <button class="layout-btn" type="button" data-layout="compact">Diseño compacto</button>
-  </div>
-
   <main>
     <section class="services" id="servicios" aria-label="Servicios principales">
       <div class="section-heading">
@@ -89,17 +83,16 @@
             <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=900&q=80" alt="Pasaporte y avión de papel" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Residencias, nacionalidad y defensa</p>
             <h3>Derecho Migratorio</h3>
-            <p class="service-lead">Asesoramos a extranjeros en todas las etapas migratorias en Chile.</p>
-            <ul class="service-list">
-              <li>Residencia Transitoria</li>
-              <li>Residencia Definitiva</li>
-              <li>Residencia Temporal</li>
-              <li>Refugio</li>
-              <li>Nacionalidad</li>
-              <li>Recursos Judiciales y Administrativos</li>
-              <li>Sanciones / Multas</li>
+            <p>
+              Inspirados en VisaDefinitiva.cl, diseñamos estrategias de regularización, visas temporales y definitivas con auditoría documental exhaustiva y seguimiento en línea.
+            </p>
+            <ul>
+              <li>Visas para profesionales, emprendimientos y reunificación.</li>
+              <li>Recursos contra rechazos, caducidades y expulsiones.</li>
             </ul>
+            <a href="areas.html#especialidades" class="text-link">Ver especialidades migratorias</a>
           </div>
         </article>
         <article class="service-card" id="civil">
@@ -107,18 +100,16 @@
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Equipo jurídico revisando cláusulas" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Contratos, patrimonio y litigios</p>
             <h3>Derecho Civil</h3>
-            <p class="service-lead">Defendemos tus derechos civiles en contratos, propiedades y demandas.</p>
-            <ul class="service-list">
-              <li>Juicio de Arrendamiento</li>
-              <li>Indemnización de Perjuicios</li>
-              <li>Cambio de Nombre</li>
-              <li>Solicitudes de Interdicción</li>
-              <li>Muerte Presunta</li>
-              <li>Juicios de Partición</li>
-              <li>Posesión Efectiva</li>
-              <li>Redacción de Escrituras y Contratos</li>
+            <p>
+              Ordenamos tu matriz de riesgos contractuales y defendemos tu patrimonio en tribunales civiles y notarías, con reportes claros para cada etapa.
+            </p>
+            <ul>
+              <li>Contratos comerciales, promesas y mandatos.</li>
+              <li>Juicios de arrendamiento, precario y deslindes.</li>
             </ul>
+            <a href="#contacto" class="text-link">Solicitar representación</a>
           </div>
         </article>
         <article class="service-card" id="familia">
@@ -126,16 +117,16 @@
             <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Familia sonriendo con apoyo legal" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Acompañamiento humano</p>
             <h3>Derecho de Familia</h3>
-            <p class="service-lead">Abordamos cada caso con sensibilidad y compromiso.</p>
-            <ul class="service-list">
-              <li>Divorcio y Separación Judicial</li>
-              <li>Pensión de Alimentos</li>
-              <li>Autorización de Salida del País</li>
-              <li>Relación Directa y Regular</li>
-              <li>Cuidado Personal</li>
-              <li>Compensación Económica</li>
+            <p>
+              Redactamos textos propios inspirados en AbogadosBulnesyAguilera.cl para guiar divorcios, alimentos y medidas de protección con empatía y firmeza.
+            </p>
+            <ul>
+              <li>Divorcios unilaterales o de común acuerdo.</li>
+              <li>Relación directa, cuidado personal y adopciones.</li>
             </ul>
+            <a href="#contacto" class="text-link">Hablar con un especialista</a>
           </div>
         </article>
         <article class="service-card" id="jpl">
@@ -143,14 +134,16 @@
             <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=80" alt="Juez con mazo" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Respuesta inmediata</p>
             <h3>Juzgado de Policía Local</h3>
-            <p class="service-lead">Representación ante juzgados locales por conflictos normativos o sanciones.</p>
-            <ul class="service-list">
-              <li>Ley de Tránsito</li>
-              <li>Ley de Copropiedad</li>
-              <li>Ley del Consumidor</li>
-              <li>Ley de Fraude Bancario</li>
+            <p>
+              Preparación express para audiencias de tránsito, consumo y ordenanzas municipales con recopilación probatoria y acuerdos tempranos.
+            </p>
+            <ul>
+              <li>Accidentes de tránsito y seguros asociados.</li>
+              <li>Reclamos SERNAC y conflictos vecinales.</li>
             </ul>
+            <a href="#contacto" class="text-link">Coordinar una audiencia</a>
           </div>
         </article>
         <article class="service-card" id="corretaje">
@@ -158,14 +151,16 @@
             <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Llave entrando a cerradura" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Operaciones inmobiliarias</p>
             <h3>Corretaje de Propiedades</h3>
-            <p class="service-lead">Gestión profesional en operaciones inmobiliarias.</p>
-            <ul class="service-list">
-              <li>Compra-Venta de Inmuebles</li>
-              <li>Administración de Propiedades</li>
-              <li>Arriendo de Inmuebles</li>
-              <li>Estudio de Títulos</li>
+            <p>
+              Revisamos títulos, promesas y escrituras, coordinamos notaría y acompañamos cierres seguros de compra, venta o arriendo.
+            </p>
+            <ul>
+              <li>Due diligence legal y estudios de títulos.</li>
+              <li>Contratos de arriendo y administración.</li>
             </ul>
+            <a href="#contacto" class="text-link">Quiero asesoría inmobiliaria</a>
           </div>
         </article>
         <article class="service-card" id="otros">
@@ -173,11 +168,16 @@
             <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Mesa de directorio con documentos" />
           </figure>
           <div class="service-text">
+            <p class="eyebrow">Soluciones integrales</p>
             <h3>Otros Servicios</h3>
-            <p class="service-lead">Servicios legales complementarios enfocados en protección y registro.</p>
-            <ul class="service-list">
-              <li>Registro de Marcas</li>
+            <p>
+              Sumamos defensa laboral, compliance y consultorías a empresas extranjeras con cronogramas, hitos y canal directo con el socio responsable.
+            </p>
+            <ul>
+              <li>Auditorías legales y programas de cumplimiento.</li>
+              <li>Contratos laborales y defensa judicial.</li>
             </ul>
+            <a href="#contacto" class="text-link">Conversemos tu proyecto</a>
           </div>
         </article>
       </div>

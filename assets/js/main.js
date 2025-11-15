@@ -70,38 +70,3 @@ const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
-
-const layoutButtons = document.querySelectorAll('.layout-btn');
-const bodyEl = document.body;
-const layoutStorageKey = 'lex360-hero-layout';
-
-if (layoutButtons.length && bodyEl) {
-  const applyLayout = (mode) => {
-    const safeMode = mode === 'compact' ? 'compact' : 'full';
-    bodyEl.classList.remove('layout-full', 'layout-compact');
-    bodyEl.classList.add(`layout-${safeMode}`);
-    layoutButtons.forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.layout === safeMode);
-    });
-  };
-
-  const savedLayout = localStorage.getItem(layoutStorageKey);
-  if (savedLayout) {
-    applyLayout(savedLayout);
-  } else {
-    const initial = bodyEl.classList.contains('layout-compact') ? 'compact' : 'full';
-    applyLayout(initial);
-  }
-
-  layoutButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const mode = button.dataset.layout;
-      applyLayout(mode);
-      localStorage.setItem(layoutStorageKey, mode);
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-}
