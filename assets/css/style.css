@@ -108,7 +108,6 @@ body.hero-mode-compact .hero-slider {
 .hero-slider {
   position: relative;
   height: clamp(360px, 75vh, 720px);
-  height: calc(90vh - 150px);
 }
 
 .inner-hero {
