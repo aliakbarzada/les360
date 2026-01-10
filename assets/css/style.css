@@ -259,59 +259,6 @@ body.hero-mode-compact main {
   transform: translateX(4px);
 }
 
-.layout-toggle {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  border: 1px solid rgba(12, 39, 64, 0.12);
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(12, 39, 64, 0.04), rgba(185, 151, 91, 0.05));
-}
-
-.layout-toggle-text {
-  flex: 1;
-  min-width: 260px;
-}
-
-.layout-toggle-text h3 {
-  color: var(--primary);
-  margin-bottom: 0.35rem;
-}
-
-.layout-toggle-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.toggle-btn {
-  border: 1px solid rgba(12, 39, 64, 0.2);
-  background: #fff;
-  color: var(--primary);
-  padding: 0.85rem 1.4rem;
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.toggle-btn.active,
-.toggle-btn:hover {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-
-.layout-toggle-hint {
-  flex-basis: 100%;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
 
 .services {
   margin-bottom: 4rem;
@@ -388,10 +335,6 @@ body.hero-mode-compact main {
   height: 100%;
 }
 
-.service-text p {
-  color: var(--muted);
-}
-
 .service-text h3 {
   color: var(--primary);
   font-size: 1.45rem;
@@ -403,7 +346,6 @@ body.hero-mode-compact main {
 }
 
 .service-list {
-.service-text ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -423,14 +365,6 @@ body.hero-mode-compact main {
   content: '✓';
   color: var(--secondary);
   font-weight: 700;
-  gap: 0.3rem;
-  color: var(--text);
-}
-
-.service-text ul li::before {
-  content: '•';
-  color: var(--secondary);
-  margin-right: 0.4rem;
 }
 
 .eyebrow {
@@ -548,8 +482,6 @@ body.hero-mode-compact main {
   display: flex;
   align-items: center;
   justify-content: center;
-  inset: auto 5vw 10%;
-  display: flex;
   gap: 1rem;
   z-index: 2;
 }
@@ -780,15 +712,6 @@ body.hero-mode-compact main {
     font-size: 0.85rem;
   }
 
-  .layout-toggle {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .layout-toggle-actions {
-    justify-content: flex-start;
-  }
-
   .quienes-layout {
     grid-template-columns: 1fr;
   }
@@ -826,16 +749,5 @@ body.hero-mode-compact main {
 
   .slider-controls {
     bottom: 10%;
-  .hero-slider {
-    height: 60vh;
-  }
-
-  main {
-    margin-top: 0;
-    border-radius: 0;
-  }
-
-  .slider-controls {
-    inset: auto 1.5rem 12%;
   }
 }
