@@ -29,31 +29,30 @@ img {
   display: block;
 }
 
+/* ===============================
+   HERO / CARRUSEL (UNIFICADO)
+================================ */
+
 .hero {
+  
   position: relative;
-  min-height: 90vh;
   background-color: #000;
   overflow: hidden;
+  width: 100%;
 }
 
-body.hero-mode-full .hero {
-  min-height: 100vh;
+
+/* 🔥 ALTURA ÚNICA PARA TODAS LAS PÁGINAS */
+.hero-slider {
+  position: relative;
+  height: 520px;
+  max-height: 520px;
 }
 
-body.hero-mode-full .hero-slider {
-  height: calc(100vh - 190px);
-  min-height: 420px;
-  max-height: 860px;
-}
-
-body.hero-mode-compact .hero {
-  min-height: auto;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(12, 39, 64, 0.08);
-}
-
+/* Neutraliza diferencias por página */
+body.hero-mode-full .hero-slider,
 body.hero-mode-compact .hero-slider {
-  height: clamp(320px, 60vh, 560px);
+  height: 520px;
 }
 
 .top-bar {
@@ -105,58 +104,9 @@ body.hero-mode-compact .hero-slider {
   color: var(--secondary);
 }
 
-.hero-slider {
-  position: relative;
-  height: clamp(360px, 75vh, 720px);
-}
-
-.inner-hero {
-  position: relative;
-  min-height: 45vh;
-  background: url('https://images.unsplash.com/photo-1523958203904-cdcb402031fd?auto=format&fit=crop&w=1600&q=80') center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: #fff;
-  overflow: hidden;
-}
-
-.inner-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(12, 39, 64, 0.95), rgba(12, 39, 64, 0.4));
-}
-
-.inner-hero-content {
-  position: relative;
-  padding: 3rem 5vw 4rem;
-  max-width: 700px;
-}
-
-.inner-hero-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 3.4rem);
-  margin-bottom: 0.5rem;
-}
-
-.inner-hero-content p {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.breadcrumb {
-  position: relative;
-  display: flex;
-  gap: 0.35rem;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  margin-bottom: 1rem;
-}
-
-.breadcrumb a {
-  color: var(--secondary);
-}
+/* ===============================
+   SLIDES
+================================ */
 
 .slide {
   position: absolute;
@@ -181,12 +131,16 @@ body.hero-mode-compact .hero-slider {
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(12, 39, 64, 0.92), rgba(12, 39, 64, 0.35));
+  background: linear-gradient(
+    120deg,
+    rgba(12, 39, 64, 0.92),
+    rgba(12, 39, 64, 0.35)
+  );
 }
 
 .slide-content {
   position: absolute;
-  bottom: 12%;
+  bottom: 14%;
   left: 5vw;
   color: #fff;
   max-width: 550px;
@@ -223,6 +177,40 @@ body.hero-mode-compact .hero-slider {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* ===============================
+   CONTROLES SLIDER
+================================ */
+
+.slider-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.control {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(12, 39, 64, 0.6);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.control:hover {
+  background: var(--secondary);
+}
+
+/* ===============================
+   MAIN
+================================ */
+
 main {
   padding: 4rem 5vw 2rem;
   background: #fff;
@@ -241,6 +229,111 @@ body.hero-mode-compact main {
   border-radius: 0;
   box-shadow: none;
 }
+
+
+/* HERO ESTÁTICO (ÁREAS / INTERNAS) */
+.inner-hero {
+  position: relative;
+  min-height: 520px; /* misma altura que el carrusel */
+  background-image: url('https://images.unsplash.com/photo-1523958203904-cdcb402031fd?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  overflow: hidden;
+}
+
+.inner-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(12, 39, 64, 0.92),
+    rgba(12, 39, 64, 0.4)
+  );
+  z-index: 1;
+}
+
+.inner-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 5vw 4rem;
+  max-width: 720px;
+}
+
+.inner-hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.4rem);
+  margin-bottom: 0.8rem;
+}
+
+.inner-hero-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .hero-slider {
+    height: 420px;
+  }
+
+  .main-nav ul {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-slider {
+    height: 360px;
+  }
+
+  .slide-content {
+    left: 6vw;
+    right: 6vw;
+    bottom: 18%;
+  }
+
+  .slider-controls {
+    bottom: 8%;
+  }
+}
+
+@media (max-width: 900px) {
+  .inner-hero {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner-hero {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 900px) {
+  .inner-hero {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner-hero {
+    min-height: 360px;
+  }
+}
+
+/*--------------------------------------------
+#CIERRE DE RESPONSIVE
+----------------------------------------------*/
 
 .text-link {
   display: inline-flex;
