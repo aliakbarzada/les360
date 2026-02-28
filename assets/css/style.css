@@ -844,3 +844,124 @@ body.hero-mode-compact main {
     bottom: 10%;
   }
 }
+
+/* --- Menú hamburguesa --- */
+.main-nav {
+  position: sticky;
+}
+
+.nav-toggle {
+  border: 1px solid rgba(12, 39, 64, 0.2);
+  background: #fff;
+  width: 48px;
+  height: 42px;
+  border-radius: 10px;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0 auto;
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% - 0.4rem);
+  right: 5vw;
+  background: #fff;
+  border: 1px solid rgba(12, 39, 64, 0.14);
+  border-radius: 14px;
+  min-width: 250px;
+  padding: 0.9rem;
+  list-style: none;
+  box-shadow: 0 18px 35px rgba(12, 39, 64, 0.15);
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-menu.is-open {
+  display: flex;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 0.5rem 0.6rem;
+}
+
+/* --- Servicios expandibles --- */
+.service-card {
+  padding-bottom: 1.1rem;
+}
+
+.service-toggle {
+  margin: 1rem auto 0;
+  border: none;
+  cursor: pointer;
+}
+
+.service-details {
+  display: none;
+}
+
+.service-card.is-open .service-details {
+  display: flex;
+}
+
+/* --- Footer legal y modal --- */
+.footer-legal-links {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.modal-link {
+  color: #d0d6e1;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 10, 22, 0.65);
+  z-index: 20;
+}
+
+.modal {
+  position: fixed;
+  inset: 5vh auto auto 50%;
+  transform: translateX(-50%);
+  width: min(900px, 92vw);
+  max-height: 88vh;
+  overflow: auto;
+  z-index: 21;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: 0 30px 60px rgba(12, 39, 64, 0.3);
+}
+
+.modal-close {
+  float: right;
+  border: none;
+  background: transparent;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
