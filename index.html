@@ -222,13 +222,20 @@
             <li><strong>Horario:</strong> Lunes a Viernes · 9:00 a 19:00 hrs</li>
           </ul>
         </div>
-        <form class="contact-form">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" type="text" placeholder="Tu nombre" required />
-          <label for="email">Correo electrónico</label>
-          <input id="email" type="email" placeholder="nombre@correo.com" required />
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" rows="4" placeholder="Cuéntanos tu caso" required></textarea>
+        <form class="contact-form" id="contactForm">
+    
+          <label>Nombre</label>
+          <input type="text" name="firstName" required>
+    
+          <label>Teléfono</label>
+          <input type="text" name="phone" required>
+    
+          <label>Email</label>
+          <input type="email" name="email" required>
+    
+          <label>Mensaje</label>
+          <textarea name="message" rows="4" required></textarea>
+    
           <button type="submit" class="btn">Enviar consulta</button>
         </form>
       </div>
@@ -260,6 +267,7 @@
     <div class="footer-copy">© <span id="year"></span> LEX360 · Estudio Jurídico. Todos los derechos reservados.</div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
