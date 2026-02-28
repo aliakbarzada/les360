@@ -70,3 +70,37 @@ const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
+
+
+/* ============================= */
+/* ===== EMAILJS (ESTABLE) ===== */
+/* ============================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  emailjs.init("FKROXwG8610HmsaSQ");
+
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_h289ntr",
+      "template_h38gure",
+      this,
+      "FKROXwG8610HmsaSQ"
+    ).then(
+      () => {
+        alert("✅ Correo enviado correctamente");
+        form.reset();
+      },
+      (error) => {
+        console.error("EmailJS Error:", error);
+        alert("❌ Error al enviar el correo");
+      }
+    );
+  });
+
+});
