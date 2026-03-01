@@ -460,6 +460,56 @@ body.hero-mode-compact main {
   font-weight: 700;
 }
 
+
+.service-grid {
+  align-items: start;
+}
+
+.service-card {
+  min-height: 100%;
+}
+
+.service-text {
+  gap: 0.9rem;
+}
+
+.service-details {
+  border-top: 1px solid rgba(12, 39, 64, 0.12);
+  padding-top: 0.7rem;
+}
+
+.service-details summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.service-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.service-details summary::after {
+  content: '＋';
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.service-details[open] summary::after {
+  content: '−';
+}
+
+.service-details .service-lead {
+  margin: 0.8rem 0 0;
+}
+
+.service-details .service-list {
+  margin-top: 0.85rem;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.25rem;
