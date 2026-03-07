@@ -235,7 +235,7 @@ body.hero-mode-compact main {
 .inner-hero {
   position: relative;
   min-height: 520px; /* misma altura que el carrusel */
-  background-image: url('https://images.unsplash.com/photo-1523958203904-cdcb402031fd?auto=format&fit=crop&w=1600&q=80');
+  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
   background-position: center;
   display: flex;
