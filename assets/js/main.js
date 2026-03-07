@@ -124,3 +124,104 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+const serviceCards = document.querySelectorAll('.service-card');
+const serviceModal = document.getElementById('serviceModal');
+
+if (serviceCards.length && serviceModal) {
+  const modalTitle = document.getElementById('serviceModalTitle');
+  const modalLead = document.getElementById('serviceModalLead');
+  const modalList = document.getElementById('serviceModalList');
+  const modalImage = document.getElementById('serviceModalImage');
+  const modalCloseControls = serviceModal.querySelectorAll('[data-close-modal]');
+  const focusableSelector = [
+    'button:not([disabled])',
+    'a[href]',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+  let lastTrigger = null;
+
+  const openServiceModal = (card, trigger) => {
+    const title = card.querySelector('h3')?.textContent?.trim() || '';
+    const lead = card.querySelector('.service-lead')?.textContent?.trim() || '';
+    const image = card.querySelector('.service-media img');
+    const items = Array.from(card.querySelectorAll('.service-list li')).map((item) => item.textContent.trim());
+
+    modalTitle.textContent = title;
+    modalLead.textContent = lead;
+    modalImage.src = image?.src || '';
+    modalImage.alt = image?.alt || title;
+    modalList.innerHTML = items.map((item) => `<li>${item}</li>`).join('');
+
+    serviceModal.hidden = false;
+    serviceModal.setAttribute('aria-hidden', 'false');
+    trigger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    lastTrigger = trigger;
+
+    const initialFocusTarget = serviceModal.querySelector('.service-modal__close');
+    if (initialFocusTarget) {
+      initialFocusTarget.focus();
+    }
+  };
+
+  const closeServiceModal = () => {
+    serviceModal.setAttribute('aria-hidden', 'true');
+    serviceModal.hidden = true;
+    document.body.style.overflow = '';
+    if (lastTrigger) {
+      lastTrigger.setAttribute('aria-expanded', 'false');
+      lastTrigger.focus();
+      lastTrigger = null;
+    }
+  };
+
+  serviceCards.forEach((card) => {
+    const trigger = card.querySelector('.service-trigger');
+    if (trigger) {
+      trigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openServiceModal(card, trigger);
+      });
+    }
+  });
+
+  modalCloseControls.forEach((control) => {
+    control.addEventListener('click', closeServiceModal);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const isOpen = serviceModal.getAttribute('aria-hidden') === 'false';
+    if (!isOpen) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
+      closeServiceModal();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusableElements = Array.from(serviceModal.querySelectorAll(focusableSelector));
+      if (!focusableElements.length) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+  });
+}

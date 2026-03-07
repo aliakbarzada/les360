@@ -448,6 +448,10 @@ body.hero-mode-compact main {
   color: var(--text);
 }
 
+.service-card .service-list {
+  display: none;
+}
+
 .service-list li {
   display: flex;
   align-items: center;
@@ -473,41 +477,107 @@ body.hero-mode-compact main {
   gap: 0.9rem;
 }
 
-.service-details {
-  border-top: 1px solid rgba(12, 39, 64, 0.12);
-  padding-top: 0.7rem;
-}
-
-.service-details summary {
-  list-style: none;
-  cursor: pointer;
-  font-weight: 700;
+.service-trigger {
+  margin-top: auto;
+  align-self: flex-start;
+  border: 1px solid rgba(12, 39, 64, 0.2);
+  background: #fff;
   color: var(--primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.service-details summary::-webkit-details-marker {
-  display: none;
-}
-
-.service-details summary::after {
-  content: '＋';
-  color: var(--secondary);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font: inherit;
   font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.service-details[open] summary::after {
-  content: '−';
+.service-trigger:hover,
+.service-trigger:focus-visible {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  outline: none;
 }
 
-.service-details .service-lead {
-  margin: 0.8rem 0 0;
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 1;
+  transition: opacity 0.2s ease;
 }
 
-.service-details .service-list {
-  margin-top: 0.85rem;
+.service-modal[aria-hidden='true'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.service-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 14, 32, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.service-modal__dialog {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: min(86vh, 760px);
+  background: #fff;
+  border-radius: 22px;
+  overflow: auto;
+  box-shadow: 0 30px 70px rgba(4, 14, 32, 0.35);
+  z-index: 1;
+  transform: translateY(0);
+  transition: transform 0.25s ease;
+}
+
+.service-modal[aria-hidden='true'] .service-modal__dialog {
+  transform: translateY(12px);
+}
+
+.service-modal__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(12, 39, 64, 0.9);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.service-modal__media {
+  height: 220px;
+  overflow: hidden;
+}
+
+.service-modal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-modal__content {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.service-modal__content .service-list {
+  display: grid;
+}
+
+@media (max-width: 640px) {
+  .service-modal__media {
+    height: 180px;
+  }
 }
 
 .eyebrow {
