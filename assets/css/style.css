@@ -235,7 +235,7 @@ body.hero-mode-compact main {
 .inner-hero {
   position: relative;
   min-height: 520px; /* misma altura que el carrusel */
-  background-image: url('https://images.unsplash.com/photo-1523958203904-cdcb402031fd?auto=format&fit=crop&w=1600&q=80');
+  background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -969,24 +969,24 @@ body.hero-mode-compact main {
    NAVBAR HERO OVERLAY + HAMBURGER
 ================================ */
 .hero {
-  min-height: 88svh;
+  min-height: 100svh;
 }
 
 .hero-slider {
-  min-height: 88svh;
-  height: 88svh;
+  min-height: 100svh;
+  height: 100svh;
   max-height: none;
 }
 
 body.hero-mode-full .hero-slider,
 body.hero-mode-compact .hero-slider {
-  min-height: 88svh;
-  height: 88svh;
+  min-height: 100svh;
+  height: 100svh;
 }
 
 .inner-hero {
-  min-height: 88svh;
-  height: 88svh;
+  min-height: 100svh;
+  height: 100svh;
 }
 
 .main-nav {
@@ -1116,8 +1116,8 @@ body.hero-mode-compact .hero-slider {
   .hero-slider,
   body.hero-mode-full .hero-slider,
   body.hero-mode-compact .hero-slider {
-    min-height: 88svh;
-    height: 88svh;
+    min-height: 100svh;
+    height: 100svh;
   }
 
   .slide-content {
