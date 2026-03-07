@@ -868,6 +868,19 @@ body.hero-mode-compact main {
   margin-top: 0;
 }
 
+.contact-address {
+  margin-bottom: 0.45rem;
+  color: var(--muted);
+}
+
+.contact-map {
+  width: 100%;
+  height: 180px;
+  margin-top: 0.65rem;
+  border: 0;
+  border-radius: 10px;
+}
+
 .contact-form {
   background: #fff;
   padding: 0.9rem 1rem;
@@ -1016,6 +1029,10 @@ body.hero-mode-compact main {
   .contact-details,
   .contact-form {
     padding: 0.85rem;
+  }
+
+  .contact-map {
+    height: 160px;
   }
 
   .slide-content {
