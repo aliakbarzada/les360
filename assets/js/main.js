@@ -135,6 +135,14 @@ if (serviceCards.length && serviceModal) {
   const modalList = document.getElementById('serviceModalList');
   const modalImage = document.getElementById('serviceModalImage');
   const modalCloseControls = serviceModal.querySelectorAll('[data-close-modal]');
+  const focusableSelector = [
+    'button:not([disabled])',
+    'a[href]',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
   let lastTrigger = null;
 
   const openServiceModal = (card, trigger) => {
@@ -151,8 +159,14 @@ if (serviceCards.length && serviceModal) {
 
     serviceModal.hidden = false;
     serviceModal.setAttribute('aria-hidden', 'false');
+    trigger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     lastTrigger = trigger;
+
+    const initialFocusTarget = serviceModal.querySelector('.service-modal__close');
+    if (initialFocusTarget) {
+      initialFocusTarget.focus();
+    }
   };
 
   const closeServiceModal = () => {
@@ -160,20 +174,13 @@ if (serviceCards.length && serviceModal) {
     serviceModal.hidden = true;
     document.body.style.overflow = '';
     if (lastTrigger) {
+      lastTrigger.setAttribute('aria-expanded', 'false');
       lastTrigger.focus();
       lastTrigger = null;
     }
   };
 
   serviceCards.forEach((card) => {
-    card.addEventListener('click', (event) => {
-      const trigger = card.querySelector('.service-trigger');
-      if (!trigger) return;
-      if (event.target.closest('.service-trigger') || event.target.closest('.service-media') || event.target.closest('.service-text')) {
-        openServiceModal(card, trigger);
-      }
-    });
-
     const trigger = card.querySelector('.service-trigger');
     if (trigger) {
       trigger.addEventListener('click', (event) => {
@@ -188,8 +195,33 @@ if (serviceCards.length && serviceModal) {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && serviceModal.getAttribute('aria-hidden') === 'false') {
+    const isOpen = serviceModal.getAttribute('aria-hidden') === 'false';
+    if (!isOpen) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
       closeServiceModal();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusableElements = Array.from(serviceModal.querySelectorAll(focusableSelector));
+      if (!focusableElements.length) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     }
   });
 }
