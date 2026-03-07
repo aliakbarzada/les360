@@ -363,7 +363,7 @@ body.hero-mode-compact main {
   gap: 1.1rem;
   max-width: 1280px;
   margin: 0 auto;
-  align-items: stretch;
+  align-items: start;
 }
 
 .service-card {
@@ -378,7 +378,6 @@ body.hero-mode-compact main {
   width: 100%;
   position: relative;
   text-align: left;
-  min-height: 330px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
@@ -426,7 +425,6 @@ body.hero-mode-compact main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 100%;
 }
 
 .service-text h3 {
@@ -473,7 +471,7 @@ body.hero-mode-compact main {
 
 
 .service-trigger {
-  margin-top: auto;
+  margin-top: 0.45rem;
   border: 1px solid rgba(12, 39, 64, 0.16);
   background: rgba(12, 39, 64, 0.04);
   color: var(--primary);
@@ -952,10 +950,6 @@ body.hero-mode-compact main {
   .service-grid {
     grid-template-columns: 1fr;
     gap: 0.9rem;
-  }
-
-  .service-card {
-    min-height: 305px;
   }
 
   .slide-content {
