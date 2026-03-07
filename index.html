@@ -247,19 +247,18 @@
             <li><strong>Horario:</strong> Lunes a Viernes · 9:00 a 19:00 hrs</li>
           </ul>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form contact-form-compact" id="contactForm">
+          <label for="contactName">Nombre</label>
+          <input id="contactName" type="text" name="firstName" placeholder="Tu nombre" required>
 
-          <label>Nombre</label>
-          <input type="text" name="firstName" required>
+          <label for="contactPhone">Teléfono</label>
+          <input id="contactPhone" type="text" name="phone" placeholder="+56 9..." required>
 
-          <label>Teléfono</label>
-          <input type="text" name="phone" required>
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" type="email" name="email" placeholder="nombre@correo.com" required>
 
-          <label>Email</label>
-          <input type="email" name="email" required>
-
-          <label>Mensaje</label>
-          <textarea name="message" rows="4" required></textarea>
+          <label for="contactMessage">Mensaje</label>
+          <textarea id="contactMessage" name="message" rows="2" placeholder="Cuéntanos brevemente tu caso" required></textarea>
 
           <button type="submit" class="btn">Enviar consulta</button>
         </form>
