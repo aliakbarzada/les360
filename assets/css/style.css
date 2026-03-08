@@ -719,11 +719,11 @@ body.hero-mode-compact main {
 }
 
 .practice-card h3 {
-  color: #d0d6e1;
+  color: #ffffff;
 }
 
 .practice-card p {
-  color: #d0d6e1;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 
