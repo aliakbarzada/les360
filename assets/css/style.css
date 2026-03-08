@@ -661,6 +661,114 @@ body.hero-mode-compact main {
   margin-bottom: 4rem;
 }
 
+
+/* ===============================
+   ÁREAS: ESTILO DIFERENCIADO
+================================ */
+.areas-page .inner-hero {
+  background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80');
+}
+
+.logo-with-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.logo-with-mark img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.areas-page .areas {
+  background: linear-gradient(180deg, #f3f5fb 0%, #ffffff 100%);
+  border: 1px solid rgba(12, 39, 64, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.areas-page .areas-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.practice-card {
+  background: linear-gradient(165deg, #0f2d4a 0%, #143e66 60%, #1c4f7a 100%);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.practice-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 55%);
+  pointer-events: none;
+}
+
+.practice-card h3,
+.practice-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.practice-card h3 {
+  color: #ffffff;
+}
+
+.practice-card p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+.practice-points {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.22rem;
+  position: relative;
+  z-index: 1;
+}
+
+.practice-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.practice-points li::before {
+  content: '•';
+  color: #f9dfb0;
+  font-weight: 700;
+}
+
+.practice-tag {
+  display: inline-flex;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.16);
+  color: #f9dfb0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.74rem;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.2rem;
+  position: relative;
+  z-index: 1;
+}
+
 .areas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
