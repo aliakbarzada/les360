@@ -888,8 +888,9 @@ body.hero-mode-compact main {
 }
 
 .contacto .section-heading h2 {
-  font-size: clamp(1.32rem, 2vw, 1.75rem);
-  line-height: 1.15;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--primary);
 }
 
 .contact-grid {
