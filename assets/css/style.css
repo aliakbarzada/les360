@@ -744,11 +744,75 @@ body.hero-mode-compact main {
 
 .cta {
   background: linear-gradient(120deg, #0c2740, #12365b);
-  border-radius: 20px;
-  padding: 3rem;
+  border-radius: 28px;
+  padding: clamp(2.2rem, 4vw, 3rem);
   color: #fff;
   margin-bottom: 4rem;
   text-align: center;
+  box-shadow: 0 20px 36px rgba(12, 39, 64, 0.2);
+}
+
+.cta-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  margin-bottom: 0.6rem;
+}
+
+.cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-actions {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.cta-pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+
+.cta-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.24);
+  filter: brightness(1.04);
+}
+
+.cta-pill-call {
+  background: #d7c3a0;
+  color: #1f2635;
+  border-color: #d7c3a0;
+}
+
+.cta-pill-whatsapp {
+  color: #33d17a;
+  border-color: rgba(51, 209, 122, 0.75);
+  background: rgba(7, 20, 33, 0.4);
+}
+
+.cta-pill-email {
+  color: #ffffff;
+  border-color: rgba(215, 195, 160, 0.62);
+  background: rgba(7, 20, 33, 0.45);
 }
 
 .lead-capture {
@@ -830,9 +894,11 @@ body.hero-mode-compact main {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: minmax(250px, 0.85fr) minmax(320px, 1.15fr);
-  gap: 0.65rem;
+  grid-template-columns: minmax(250px, 0.95fr) minmax(280px, 0.82fr);
+  gap: 0.85rem;
   align-items: start;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 .contact-details {
@@ -866,6 +932,21 @@ body.hero-mode-compact main {
   margin-top: 0;
 }
 
+.contact-address {
+  margin-bottom: 0.45rem;
+  color: var(--muted);
+}
+
+.contact-map {
+  display: block;
+  width: calc(100% + 2rem);
+  max-width: none;
+  height: 190px;
+  margin: 0.65rem -1rem 0;
+  border: 0;
+  border-radius: 0 0 10px 10px;
+}
+
 .contact-form {
   background: #fff;
   padding: 0.9rem 1rem;
@@ -874,6 +955,9 @@ body.hero-mode-compact main {
   display: grid;
   gap: 0.22rem;
   box-shadow: 0 8px 14px rgba(12, 39, 64, 0.05);
+  max-width: 430px;
+  width: 100%;
+  justify-self: end;
 }
 
 .contact-form label {
@@ -904,6 +988,10 @@ body.hero-mode-compact main {
   width: fit-content;
   padding: 0.52rem 1rem;
   font-size: 0.86rem;
+}
+
+.contact-form-compact {
+  gap: 0.16rem;
 }
 
 .footer {
@@ -964,8 +1052,20 @@ body.hero-mode-compact main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .cta-actions {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 1.25rem auto 0;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    justify-self: stretch;
   }
 
   .hero-slider {
@@ -994,6 +1094,17 @@ body.hero-mode-compact main {
     gap: 0.9rem;
   }
 
+  .cta {
+    border-radius: 22px;
+    padding: 1.7rem 1.1rem;
+  }
+
+  .cta-pill {
+    font-size: 0.96rem;
+    min-height: 52px;
+    padding: 0.78rem 1rem;
+  }
+
   .contacto {
     margin-bottom: 1.4rem;
   }
@@ -1001,6 +1112,13 @@ body.hero-mode-compact main {
   .contact-details,
   .contact-form {
     padding: 0.85rem;
+  }
+
+  .contact-map {
+    width: calc(100% + 1.7rem);
+    height: 160px;
+    margin-left: -0.85rem;
+    margin-right: -0.85rem;
   }
 
   .slide-content {
