@@ -100,6 +100,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   emailjs.init("FKROXwG8610HmsaSQ");
 
+  const setFormMessage = (form, message, type = "success") => {
+    let feedback = form.querySelector('.form-feedback');
+
+    if (!feedback) {
+      feedback = document.createElement('p');
+      feedback.className = 'form-feedback';
+      feedback.setAttribute('role', 'status');
+      feedback.setAttribute('aria-live', 'polite');
+      form.appendChild(feedback);
+    }
+
+    feedback.textContent = message;
+    feedback.style.color = type === 'success' ? '#0f7b43' : '#b42318';
+    feedback.style.fontWeight = '600';
+    feedback.style.marginTop = '0.75rem';
+  };
+
   /* ============================= */
   /* ===== FORMULARIO INDEX ====== */
   /* ============================= */
@@ -116,12 +133,15 @@ document.addEventListener("DOMContentLoaded", function () {
         this
       ).then(
         () => {
-          alert("✅ Consulta enviada correctamente");
+          setFormMessage(contactForm, "✅ Correo enviado correctamente. Te contactaremos pronto.");
           contactForm.reset();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1800);
         },
         (error) => {
           console.error("EmailJS Error:", error);
-          alert("❌ Error al enviar la consulta");
+          setFormMessage(contactForm, "❌ No se pudo enviar el correo. Inténtalo nuevamente.", "error");
         }
       );
     });
@@ -144,12 +164,15 @@ document.addEventListener("DOMContentLoaded", function () {
         this
       ).then(
         () => {
-          alert("✅ Solicitud enviada correctamente");
+          setFormMessage(leadForm, "✅ Correo enviado correctamente. Te contactaremos pronto.");
           leadForm.reset();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1800);
         },
         (error) => {
           console.error("EmailJS Error:", error);
-          alert("❌ No se pudo enviar la solicitud");
+          setFormMessage(leadForm, "❌ No se pudo enviar el correo. Inténtalo nuevamente.", "error");
         }
       );
     });
