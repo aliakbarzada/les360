@@ -93,35 +93,67 @@ if (yearEl) {
 
 
 /* ============================= */
-/* ===== EMAILJS (ESTABLE) ===== */
+/* ===== EMAILJS (FORMULARIOS) = */
 /* ============================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
   emailjs.init("FKROXwG8610HmsaSQ");
 
-  const form = document.getElementById("contactForm");
-  if (!form) return;
+  /* ============================= */
+  /* ===== FORMULARIO INDEX ====== */
+  /* ============================= */
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const contactForm = document.getElementById("contactForm");
 
-    emailjs.sendForm(
-      "service_h289ntr",
-      "template_h38gure",
-      this,
-      "FKROXwG8610HmsaSQ"
-    ).then(
-      () => {
-        alert("✅ Correo enviado correctamente");
-        form.reset();
-      },
-      (error) => {
-        console.error("EmailJS Error:", error);
-        alert("❌ Error al enviar el correo");
-      }
-    );
-  });
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm(
+        "service_h289ntr",
+        "template_h38gure",
+        this
+      ).then(
+        () => {
+          alert("✅ Consulta enviada correctamente");
+          contactForm.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("❌ Error al enviar la consulta");
+        }
+      );
+    });
+  }
+
+
+  /* ============================= */
+  /* ===== FORMULARIO AREAS ====== */
+  /* ============================= */
+
+  const leadForm = document.getElementById("leadForm");
+
+  if (leadForm) {
+    leadForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm(
+        "service_h289ntr",
+        "template_xg6p48k",
+        this
+      ).then(
+        () => {
+          alert("✅ Solicitud enviada correctamente");
+          leadForm.reset();
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("❌ No se pudo enviar la solicitud");
+        }
+      );
+    });
+  }
 
 });
 
