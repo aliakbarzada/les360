@@ -13,10 +13,18 @@
 </head>
 
 <body class="hero-mode-compact areas-page">
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/56921625011"
+    class="whatsapp-float"
+    target="_blank">
+
+    <img src="assets/wsp.png" alt="WhatsApp">
+
+  </a>
 
 <header class="hero" id="inicio">
   <nav class="main-nav">
-    <div class="logo logo-with-mark"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=120&q=80" alt="Equipo en práctica profesional colaborando" /><span>LEX360</span></div>
+    <div class="logo">LEX360</div>
     <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
       <span></span>
       <span></span>
@@ -50,7 +58,6 @@
       <div class="section-heading">
         <p>Programa de práctica profesional</p>
         <h2>Áreas de práctica legal en las que puedes participar</h2>
-        <p class="section-subtitle">Estas áreas replican los servicios activos de LEX360 para que identifiques con claridad dónde podrás aprender, apoyar casos reales y desarrollar habilidades jurídicas aplicadas.</p>
       </div>
       <div class="areas-grid" id="especialidades">
         <article class="area-card practice-card">
@@ -118,34 +125,64 @@
 
     <section class="lead-capture" id="postulacion">
       <div class="lead-text">
-        <p class="eyebrow">Postula a práctica profesional</p>
-        <h2>Comparte tu perfil y te contactamos</h2>
+        <p class="eyebrow">Postula tu caso</p>
+        <h2>Comparte los antecedentes y te contactamos</h2>
         <p>
-          Revisamos tus antecedentes académicos, intereses de especialización y disponibilidad para integrarte al equipo en el área que mejor se alinee con tu formación.
+          Reunimos la información clave de tu trámite migratorio, litigio civil o audiencia de familia para asignarte al abogado indicado y responderte en menos de 24 horas hábiles.
         </p>
         <ul>
-          <li>Asignación por área según tu perfil y objetivos de aprendizaje.</li>
-          <li>Modalidad flexible: práctica online, presencial o híbrida.</li>
-          <li>Acompañamiento directo de abogados senior durante tu proceso.</li>
+          <li>Canal prioritario para urgencias migratorias.</li>
+          <li>Agenda flexible en modalidad online o presencial.</li>
+          <li>Seguimiento directo con el socio del área.</li>
         </ul>
       </div>
-      <form class="lead-form">
-        <label for="nombre-lead">Nombre completo</label>
-        <input id="nombre-lead" type="text" placeholder="Tu nombre" required />
-        <label for="email-lead">Correo electrónico</label>
-        <input id="email-lead" type="email" placeholder="nombre@correo.com" required />
-        <label for="tipo-caso">Tipo de caso</label>
-        <select id="tipo-caso" required>
-          <option value="">Selecciona una opción</option>
-          <option>Migratorio</option>
-          <option>Civil</option>
-          <option>Familia</option>
-          <option>Juzgado de Policía Local</option>
-        </select>
-        <label for="detalle-caso">Detalle</label>
-        <textarea id="detalle-caso" rows="3" placeholder="Cuéntanos brevemente tu situación" required></textarea>
-        <button type="submit" class="btn">Enviar solicitud</button>
-      </form>
+    <form class="lead-form" id="leadForm">
+    
+      <label for="nombre-lead">Nombre completo</label>
+      <input 
+        id="nombre-lead"
+        name="nombre"
+        type="text"
+        placeholder="Tu nombre completo"
+        required
+      />
+    
+      <label for="email-lead">Correo electrónico</label>
+      <input 
+        id="email-lead"
+        name="email"
+        type="email"
+        placeholder="nombre@correo.com"
+        required
+      />
+    
+      <label for="tipo-caso">Tipo de caso</label>
+      <select 
+        id="tipo-caso"
+        name="tipoCaso"
+        required
+      >
+        <option value="">Selecciona una opción</option>
+        <option value="Migratorio">Migratorio</option>
+        <option value="Civil">Civil</option>
+        <option value="Familia">Familia</option>
+        <option value="Juzgado de Policía Local">Juzgado de Policía Local</option>
+      </select>
+    
+      <label for="detalle-caso">Detalle del caso</label>
+      <textarea 
+        id="detalle-caso"
+        name="detalleCaso"
+        rows="3"
+        placeholder="Cuéntanos brevemente tu situación"
+        required
+      ></textarea>
+    
+      <button type="submit" class="btn">
+        Enviar solicitud
+      </button>
+    
+    </form>
     </section>
   </main>
 
@@ -174,6 +211,7 @@
     <div class="footer-copy">© <span id="year"></span> LEX360 · Estudio Jurídico. Todos los derechos reservados.</div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
