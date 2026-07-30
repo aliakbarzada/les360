@@ -1,18 +1,34 @@
-# LEX360 Landing Pages
+# LEX360 — sitio legal estático multi-URL
 
-Este repositorio contiene las dos vistas solicitadas para el estudio jurídico LEX360:
+El sitio usa HTML5 estático y semántico: encabezados, explicaciones, requisitos, procesos y preguntas frecuentes están disponibles en el código fuente sin depender de JavaScript. JavaScript solo aporta mejoras progresivas (menú, carrusel, modales y formularios).
 
-- `index.html`: landing page principal con hero slider, sección de servicios, bloque "Quiénes Somos" y formulario de contacto.
-- `areas.html`: página independiente con el detalle completo de las áreas de práctica y el formulario corto de postulación.
+## Estructura
 
-## Cómo visualizar los cambios
+```text
+index.html                       Página institucional
+servicios-legales/index.html    Catálogo general
+ derecho-migratorio/index.html  Landing de campaña migratoria
+ derecho-de-familia/index.html  Landing de campaña de familia
+assets/css/style.css             Sistema visual compartido
+assets/js/main.js                Interacciones progresivas
+.htaccess                        HTTPS, alias heredados y URLs limpias
+robots.txt / sitemap.xml         Descubrimiento e indexación
+```
 
-Para revisar los cambios en modo imagen (vista de navegador) solo necesitas un servidor estático muy simple:
+> Las carpetas `derecho-*` aparecen sin sangría real en el repositorio; cada una se publica como una URL limpia independiente.
+
+## Publicación en cPanel
+
+1. Copia todo el contenido a `public_html`, preservando las carpetas.
+2. Activa el certificado SSL antes de habilitar la redirección HTTPS de `.htaccess`.
+3. Comprueba `/servicios-legales/`, `/derecho-migratorio/` y `/derecho-de-familia/`.
+4. Para asociar un dominio o subdominio solo a una campaña, usa en cPanel la carpeta de esa landing como **Document Root**.
+5. Sustituye el dominio de los enlaces `canonical` y de `sitemap.xml` si el dominio de producción no es `lex360.cl`.
+
+## Desarrollo local
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Luego abre tu navegador en `http://localhost:8000/index.html` para la landing y `http://localhost:8000/areas.html` para la página de áreas. Ambas páginas son completamente responsivas, por lo que puedes usar las herramientas de desarrollo del navegador para simular tablets y teléfonos y así verificar el comportamiento del carrusel y las tarjetas de servicios.
-
-Si prefieres abrir los archivos directamente sin servidor, basta con hacer doble clic en `index.html` o `areas.html` y tu navegador mostrará la vista estática; no obstante, el carrusel y algunas animaciones lucen mejor cuando se sirve desde `http.server` o cualquier servidor ligero.
+Visita `http://localhost:8000/`. Las reglas `.htaccess` requieren Apache y por ello no se aplican en el servidor local de Python.
