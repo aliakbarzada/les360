@@ -1,0 +1,23 @@
+# LEX360 - reglas compatibles con Apache/cPanel.
+# Subir este archivo a public_html junto a index.html y las carpetas de cada landing.
+RewriteEngine On
+
+# Fuerza HTTPS cuando el certificado SSL ya esté activo en cPanel.
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Alias heredados: conserva campañas o enlaces antiguos .xhtml sin servir XHTML.
+RewriteRule ^index\.xhtml$ / [R=301,L,NE]
+RewriteRule ^areas\.xhtml$ /servicios-legales/ [R=301,L,NE]
+RewriteRule ^areas\.html$ /servicios-legales/ [R=301,L,NE]
+
+# Apache DirectoryIndex sirve /carpeta/index.html en las URLs limpias siguientes:
+# /servicios-legales/  -> public_html/servicios-legales/index.html
+# /derecho-migratorio/ -> public_html/derecho-migratorio/index.html
+# /derecho-de-familia/ -> public_html/derecho-de-familia/index.html
+DirectoryIndex index.html
+
+# Si cPanel apunta otro dominio o subdominio a una landing, configurar su Document Root
+# directamente a la carpeta correspondiente; no es necesario duplicar archivos.
+
+ErrorDocument 404 /index.html
