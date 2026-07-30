@@ -1,108 +1,85 @@
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.control.prev');
-const nextBtn = document.querySelector('.control.next');
-let currentIndex = 0;
-let sliderInterval;
+(function () {
+  'use strict';
 
-if (slides.length) {
-  const showSlide = (index) => {
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle('active', idx === index);
+  const $ = (selector, context = document) => context.querySelector(selector);
+  const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
+
+  const slides = $$('.slide');
+  const prevBtn = $('.control.prev');
+  const nextBtn = $('.control.next');
+  let currentIndex = 0;
+  let sliderInterval = null;
+
+  if (slides.length) {
+    const showSlide = (index) => {
+      slides.forEach((slide, idx) => slide.classList.toggle('active', idx === index));
+      currentIndex = index;
+    };
+
+    const nextSlide = () => showSlide((currentIndex + 1) % slides.length);
+    const prevSlide = () => showSlide((currentIndex - 1 + slides.length) % slides.length);
+    const startSlider = () => { sliderInterval = window.setInterval(nextSlide, 6000); };
+    const resetSlider = () => {
+      window.clearInterval(sliderInterval);
+      startSlider();
+    };
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        prevSlide();
+        resetSlider();
+      });
+      nextBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        nextSlide();
+        resetSlider();
+      });
+    }
+
+    slides.forEach((slide) => {
+      slide.addEventListener('click', () => {
+        const target = slide.dataset.target;
+        const url = slide.dataset.url;
+        if (target) {
+          const targetEl = $(target);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+        }
+        if (url) window.location.href = url;
+      });
     });
-    currentIndex = index;
-  };
 
-  const nextSlide = () => {
-    const nextIndex = (currentIndex + 1) % slides.length;
-    showSlide(nextIndex);
-  };
-
-  const prevSlide = () => {
-    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(prevIndex);
-  };
-
-  const startSlider = () => {
-    sliderInterval = setInterval(nextSlide, 6000);
-  };
-
-  const resetSlider = () => {
-    clearInterval(sliderInterval);
+    showSlide(0);
     startSlider();
-  };
+  }
 
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      resetSlider();
+  const nav = $('.main-nav');
+  const navToggle = $('.nav-toggle');
+  const navMenu = $('#nav-menu');
+
+  if (nav && navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open', !expanded);
     });
 
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      resetSlider();
+    $$('a', navMenu).forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
-  slides.forEach((slide) => {
-    const target = slide.dataset.target;
-    const url = slide.dataset.url;
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-    slide.addEventListener('click', () => {
-      if (target) {
-        const targetEl = document.querySelector(target);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' });
-          return;
-        }
-      }
-
-      if (url) {
-        window.location.href = url;
-      }
-    });
-  });
-
-  showSlide(0);
-  startSlider();
-}
-
-
-const nav = document.querySelector('.main-nav');
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.getElementById('nav-menu');
-
-if (nav && navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('is-open', !expanded);
-  });
-
-  navMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
-
-const yearEl = document.getElementById('year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
-
-/* ============================= */
-/* ===== EMAILJS (FORMULARIOS) = */
-/* ============================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  emailjs.init("FKROXwG8610HmsaSQ");
-
-  const setFormMessage = (form, message, type = "success") => {
-    let feedback = form.querySelector('.form-feedback');
-
+  const setFormMessage = (form, message, type = 'success') => {
+    let feedback = $('.form-feedback', form);
     if (!feedback) {
       feedback = document.createElement('p');
       feedback.className = 'form-feedback';
@@ -110,161 +87,132 @@ document.addEventListener("DOMContentLoaded", function () {
       feedback.setAttribute('aria-live', 'polite');
       form.appendChild(feedback);
     }
-
     feedback.textContent = message;
-    feedback.style.color = type === 'success' ? '#0f7b43' : '#b42318';
-    feedback.style.fontWeight = '600';
-    feedback.style.marginTop = '0.75rem';
+    feedback.dataset.type = type;
   };
 
-  /* ============================= */
-  /* ===== FORMULARIO INDEX ====== */
-  /* ============================= */
+  const sendForm = async (form, formType) => {
+    const submitButton = $('button[type="submit"]', form);
+    const formData = new FormData(form);
+    const payload = { formType };
+    formData.forEach((value, key) => { payload[key] = String(value || '').trim(); });
 
-  const contactForm = document.getElementById("contactForm");
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      emailjs.sendForm(
-        "service_h289ntr",
-        "template_h38gure",
-        this
-      ).then(
-        () => {
-          setFormMessage(contactForm, "✅ Correo enviado correctamente. Te contactaremos pronto.");
-          contactForm.reset();
-          setTimeout(() => {
-            window.location.reload();
-          }, 1800);
-        },
-        (error) => {
-          console.error("EmailJS Error:", error);
-          setFormMessage(contactForm, "❌ No se pudo enviar el correo. Inténtalo nuevamente.", "error");
-        }
-      );
-    });
-  }
-
-
-  /* ============================= */
-  /* ===== FORMULARIO AREAS ====== */
-  /* ============================= */
-
-  const leadForm = document.getElementById("leadForm");
-
-  if (leadForm) {
-    leadForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      emailjs.sendForm(
-        "service_h289ntr",
-        "template_xg6p48k",
-        this
-      ).then(
-        () => {
-          setFormMessage(leadForm, "✅ Correo enviado correctamente. Te contactaremos pronto.");
-          leadForm.reset();
-          setTimeout(() => {
-            window.location.reload();
-          }, 1800);
-        },
-        (error) => {
-          console.error("EmailJS Error:", error);
-          setFormMessage(leadForm, "❌ No se pudo enviar el correo. Inténtalo nuevamente.", "error");
-        }
-      );
-    });
-  }
-
-});
-
-
-const serviceCards = document.querySelectorAll('.service-card');
-const serviceModal = document.getElementById('serviceModal');
-
-if (serviceCards.length && serviceModal) {
-  const modalTitle = document.getElementById('serviceModalTitle');
-  const modalLead = document.getElementById('serviceModalLead');
-  const modalList = document.getElementById('serviceModalList');
-  const modalImage = document.getElementById('serviceModalImage');
-  const modalCloseControls = serviceModal.querySelectorAll('[data-close-modal]');
-  const focusableSelector = [
-    'button:not([disabled])',
-    'a[href]',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])'
-  ].join(',');
-  let lastTrigger = null;
-
-  const openServiceModal = (card, trigger) => {
-    const title = card.querySelector('h3')?.textContent?.trim() || '';
-    const lead = card.querySelector('.service-lead')?.textContent?.trim() || '';
-    const image = card.querySelector('.service-media img');
-    const items = Array.from(card.querySelectorAll('.service-list li')).map((item) => item.textContent.trim());
-
-    modalTitle.textContent = title;
-    modalLead.textContent = lead;
-    modalImage.src = image?.src || '';
-    modalImage.alt = image?.alt || title;
-    modalList.innerHTML = items.map((item) => `<li>${item}</li>`).join('');
-
-    serviceModal.hidden = false;
-    serviceModal.setAttribute('aria-hidden', 'false');
-    trigger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    lastTrigger = trigger;
-
-    const initialFocusTarget = serviceModal.querySelector('.service-modal__close');
-    if (initialFocusTarget) {
-      initialFocusTarget.focus();
-    }
-  };
-
-  const closeServiceModal = () => {
-    serviceModal.setAttribute('aria-hidden', 'true');
-    serviceModal.hidden = true;
-    document.body.style.overflow = '';
-    if (lastTrigger) {
-      lastTrigger.setAttribute('aria-expanded', 'false');
-      lastTrigger.focus();
-      lastTrigger = null;
-    }
-  };
-
-  serviceCards.forEach((card) => {
-    const trigger = card.querySelector('.service-trigger');
-    if (trigger) {
-      trigger.addEventListener('click', (event) => {
-        event.stopPropagation();
-        openServiceModal(card, trigger);
+    try {
+      if (submitButton) submitButton.disabled = true;
+      const response = await fetch('api/send-mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.message || 'No se pudo enviar el correo.');
+      setFormMessage(form, result.message || 'Correo enviado correctamente. Te contactaremos pronto.');
+      form.reset();
+    } catch (error) {
+      console.error('LEX360 form error:', error);
+      setFormMessage(form, error.message || 'No se pudo enviar el correo. Inténtalo nuevamente.', 'error');
+    } finally {
+      if (submitButton) submitButton.disabled = false;
     }
-  });
+  };
 
-  modalCloseControls.forEach((control) => {
-    control.addEventListener('click', closeServiceModal);
-  });
+  const contactForm = $('#contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      sendForm(contactForm, 'contact');
+    });
+  }
 
-  document.addEventListener('keydown', (event) => {
-    const isOpen = serviceModal.getAttribute('aria-hidden') === 'false';
-    if (!isOpen) {
-      return;
-    }
+  const leadForm = $('#leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      sendForm(leadForm, 'lead');
+    });
+  }
 
-    if (event.key === 'Escape') {
-      closeServiceModal();
-      return;
-    }
+  const serviceCards = $$('.service-card');
+  const serviceModal = $('#serviceModal');
 
-    if (event.key === 'Tab') {
-      const focusableElements = Array.from(serviceModal.querySelectorAll(focusableSelector));
-      if (!focusableElements.length) {
+  if (serviceCards.length && serviceModal) {
+    const modalTitle = $('#serviceModalTitle');
+    const modalLead = $('#serviceModalLead');
+    const modalList = $('#serviceModalList');
+    const modalImage = $('#serviceModalImage');
+    const modalCloseControls = $$('[data-close-modal]', serviceModal);
+    const focusableSelector = [
+      'button:not([disabled])',
+      'a[href]',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+    let lastTrigger = null;
+
+    const openServiceModal = (card, trigger) => {
+      const title = $('h3', card)?.textContent?.trim() || '';
+      const lead = $('.service-lead', card)?.textContent?.trim() || '';
+      const image = $('.service-media img', card);
+      const items = $$('.service-list li', card).map((item) => item.textContent.trim());
+
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalLead) modalLead.textContent = lead;
+      if (modalImage) {
+        modalImage.setAttribute('src', image?.getAttribute('src') || '');
+        modalImage.setAttribute('alt', image?.getAttribute('alt') || title);
+      }
+      if (modalList) {
+        modalList.textContent = '';
+        items.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          modalList.appendChild(li);
+        });
+      }
+
+      serviceModal.hidden = false;
+      serviceModal.setAttribute('aria-hidden', 'false');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      lastTrigger = trigger;
+      $('.service-modal__close', serviceModal)?.focus();
+    };
+
+    const closeServiceModal = () => {
+      serviceModal.setAttribute('aria-hidden', 'true');
+      serviceModal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastTrigger) {
+        lastTrigger.setAttribute('aria-expanded', 'false');
+        lastTrigger.focus();
+        lastTrigger = null;
+      }
+    };
+
+    serviceCards.forEach((card) => {
+      const trigger = $('.service-trigger', card);
+      if (trigger) {
+        trigger.addEventListener('click', (event) => {
+          event.stopPropagation();
+          openServiceModal(card, trigger);
+        });
+      }
+    });
+
+    modalCloseControls.forEach((control) => control.addEventListener('click', closeServiceModal));
+
+    document.addEventListener('keydown', (event) => {
+      if (serviceModal.getAttribute('aria-hidden') !== 'false') return;
+      if (event.key === 'Escape') {
+        closeServiceModal();
         return;
       }
+      if (event.key !== 'Tab') return;
+
+      const focusableElements = $$(focusableSelector, serviceModal);
+      if (!focusableElements.length) return;
 
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
@@ -277,6 +225,6 @@ if (serviceCards.length && serviceModal) {
         event.preventDefault();
         firstElement.focus();
       }
-    }
-  });
-}
+    });
+  }
+}());
