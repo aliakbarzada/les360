@@ -21,3 +21,10 @@ DirectoryIndex index.html
 # directamente a la carpeta correspondiente; no es necesario duplicar archivos.
 
 ErrorDocument 404 /index.html
+
+# Alias opcionales agrupados bajo /servicios/. Las cards usan los archivos .html
+# directamente para funcionar incluso en hosting estático sin mod_rewrite.
+RewriteRule ^servicios/derecho-penal/?$ /derecho-penal.html [L,NC]
+RewriteRule ^servicios/derecho-civil/?$ /derecho-civil.html [L,NC]
+RewriteRule ^servicios/ley-de-quiebra/?$ /ley-de-quiebra.html [L,NC]
+RewriteRule ^servicios/juzgado-policia-local/?$ /juzgado-policia-local.html [L,NC]

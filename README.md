@@ -9,6 +9,10 @@ index.html                       Página institucional
 servicios-legales/index.html    Catálogo general
  derecho-migratorio/index.html  Landing de campaña migratoria
  derecho-de-familia/index.html  Landing de campaña de familia
+derecho-penal.html                Defensa penal
+derecho-civil.html                Contratos y litigios civiles
+ley-de-quiebra.html               Insolvencia y procedimientos concursales
+juzgado-policia-local.html        Tránsito, consumo y copropiedad
 assets/css/style.css             Sistema visual compartido
 assets/js/main.js                Interacciones progresivas
 .htaccess                        HTTPS, alias heredados y URLs limpias
@@ -21,9 +25,10 @@ robots.txt / sitemap.xml         Descubrimiento e indexación
 
 1. Copia todo el contenido a `public_html`, preservando las carpetas.
 2. Activa el certificado SSL antes de habilitar la redirección HTTPS de `.htaccess`.
-3. Comprueba `/servicios-legales/`, `/derecho-migratorio/` y `/derecho-de-familia/`.
-4. Para asociar un dominio o subdominio solo a una campaña, usa en cPanel la carpeta de esa landing como **Document Root**.
-5. Sustituye el dominio de los enlaces `canonical` y de `sitemap.xml` si el dominio de producción no es `lex360.cl`.
+3. Comprueba `/servicios-legales/`, las dos carpetas `derecho-*` y los cuatro archivos `.html` de servicios.
+4. Los alias opcionales `/servicios/<slug>/` están documentados en `.htaccess`.
+5. Para asociar un dominio o subdominio solo a una campaña, usa en cPanel la carpeta de esa landing como **Document Root**.
+6. Sustituye el dominio de los enlaces `canonical` y de `sitemap.xml` si el dominio de producción no es `lex360.cl`.
 
 ## Desarrollo local
 
